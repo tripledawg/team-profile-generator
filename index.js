@@ -1,7 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// user is manager with :manager’s name, employee ID, email address, and office number
 function managerInit() {
     inquirer
         .prompt([
@@ -28,12 +27,21 @@ function managerInit() {
             },
             {
                 type: 'input',
-                name: 'office number',
+                name: 'officeNumber',
                 message: 'What is the team manager\'s office number?'
             },
 
         ])
 };
+
+managerInit()
+    .then(data => {
+        console.log('Welcome manager!')
+    })
+    .catch(err => {
+        console.log(err)
+    })
+
 
 function employeeInit() {
     inquirer
