@@ -1,7 +1,41 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-function init() {
+// user is manager with :manager’s name, employee ID, email address, and office number
+function managerInit() {
+    inquirer
+        .prompt([
+            {
+                type: 'input',
+                name: 'firstName',
+                message: 'What is the team manager\'s first name?'
+            },
+            {
+                type: 'input',
+                name: 'lastName',
+                message: 'What is team manager\'s last name?'
+
+            },
+            {
+                type: 'input',
+                name: 'id',
+                message: 'What is the team manager\'s ID number?'
+            },
+            {
+                type: 'input',
+                name: 'email',
+                message: 'What is the team manager\'s email?'
+            },
+            {
+                type: 'input',
+                name: 'office number',
+                message: 'What is the team manager\'s office number?'
+            },
+
+        ])
+};
+
+function employeeInit() {
     inquirer
         .prompt([
             {
@@ -29,7 +63,7 @@ function init() {
                 type: 'checkbox',
                 name: 'role',
                 message: 'What is the team member\'s role at your company?',
-                choices: ['intern', 'engineer', 'manager']
+                choices: ['intern', 'engineer',]
             },
         ])
 };
@@ -46,9 +80,4 @@ function init() {
 //     name: 'gitHub',
 //     message: 'What is the engineer's GitHub username?'
 // }
-//if manager 
-// {
-//     type: 'input',
-//     name: 'office',
-//     message: 'Where is this manager\s office?'
-// }
+
