@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateHtml = require ('./generateHtml');
 
 function managerInit() {
     inquirer
@@ -32,6 +33,9 @@ function managerInit() {
             },
 
         ])
+        .then((answers) => {
+            console.log(answers);
+        });
 };
 
 managerInit()
@@ -42,7 +46,6 @@ managerInit()
     .catch(err => {
         console.log(err)
     });
-
 
 function employeeInit() {
     inquirer
@@ -86,21 +89,7 @@ function employeeInit() {
                 message: 'What is this engineer\'s GitHub username?',
                 when: (input) => input.gitHub === "Engineer"
             }
-
-
         ])
 };
 
-// if intern  
-// {
-//     type: 'input',
-//     name: 'school',
-//     message: 'What is the name of the intern\s school?'
-// }
-//if engineer
-// {
-//     type: 'input',
-//     name: 'gitHub',
-//     message: 'What is the engineer's GitHub username?'
-// }
 
