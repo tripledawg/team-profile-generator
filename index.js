@@ -54,7 +54,7 @@ function employeeInit() {
             {
                 type: 'input',
                 name: 'lastName',
-                message: 'What is team member\'s last name?'
+                message: 'What is the team member\'s last name?'
 
             },
             {
@@ -73,6 +73,20 @@ function employeeInit() {
                 message: 'What is the team member\'s role at your company?',
                 choices: ['intern', 'engineer',]
             },
+            {
+                type: 'input',
+                name: 'school',
+                message: 'What is the name of this intern\s school?',
+                when: (input) => input.role === "intern",
+            },
+            {
+                type: 'input',
+                name: 'gitHub',
+                message: 'What is this engineer\'s GitHub username?',
+                when: (input) => input.gitHub === "Engineer"
+            }
+
+
         ])
 };
 
