@@ -37,10 +37,11 @@ function managerInit() {
 managerInit()
     .then(data => {
         console.log('Welcome manager!')
+        employeeInit();
     })
     .catch(err => {
         console.log(err)
-    })
+    });
 
 
 function employeeInit() {
