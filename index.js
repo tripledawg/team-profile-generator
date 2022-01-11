@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHtml = require ('./generateHtml');
 
-const managerInit = function managerInit() {
+function managerInit() {
    return inquirer
         .prompt([
             {
@@ -48,7 +48,7 @@ managerInit()
     });
 
 function employeeInit() {
-    inquirer
+    return inquirer
         .prompt([
             {
                 type: 'input',
@@ -80,14 +80,14 @@ function employeeInit() {
             {
                 type: 'input',
                 name: 'school',
-                message: 'What is the name of this intern\s school?',
-                when: (input) => input.role === "intern",
+                message: 'What is the name of this intern\'s school?',
+                when: (input) => input.role == "intern"
             },
             {
                 type: 'input',
                 name: 'gitHub',
                 message: 'What is this engineer\'s GitHub username?',
-                when: (input) => input.gitHub === "Engineer"
+                when: (input) => input.gitHub == "engineer"
             }
         ])
 };
