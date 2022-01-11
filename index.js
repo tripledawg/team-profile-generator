@@ -2,8 +2,8 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHtml = require ('./generateHtml');
 
-function managerInit() {
-    inquirer
+const managerInit = function managerInit() {
+   return inquirer
         .prompt([
             {
                 type: 'input',
