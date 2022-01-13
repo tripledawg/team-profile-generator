@@ -31,7 +31,9 @@ const generateManager = (manager) => {
         <div class="card">
             <div class="card-header">
                 <h2>${manager.name}</h2>
-                <h3>Manager</h3><i></i>
+                <h3>Manager</h3><i><span class="<span class="material-icons-outlined">
+                meeting_room
+                </span></i>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${manager.id}</p>
@@ -50,7 +52,9 @@ const generateEngineer = (engineer) => {
         <div class="card">
             <div class="card-header">
                 <h2>${engineer.name}</h2>
-                <h3>Engineer</h3><i></i>
+                <h3>Engineer</h3><i><span class="material-icons-outlined">
+                developer_board
+                </span></i>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${engineer.id}</p>
@@ -69,7 +73,10 @@ const generateIntern = (intern)=> {
         <div class="card">
             <div class="card-header">
                 <h2>${intern.name}</h2>
-                <h3>Intern</h3><i></i>
+                <h3>Intern</h3><i><span class="material-icons-outlined">
+                backpack
+                </span>
+                </i>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${intern.id}</p>
