@@ -1,29 +1,84 @@
 
+//basic page
+const generateMyTeamPage = (emploeeCards) => {   
+    return`
+<!DOCTYPE html>
+<html lang="en">
 
-//require ??
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Team Profile Generator</title>
+</head>
 
-const headingCol = document.createElement('div')
-const card = document.createElement('div');
-const cardBody = document.createElement('div');
-const cardHeading = document.createElement('h2');
-const cardRole = document.createElement('img');
+<body>
+    <header>
+        <h1>My Team</h1>
+    </header>
+    <script src="script.js"></script>
+</body>
 
-const email = document.createElement('p');
-const id = document.createElement('p'); 
-const gitHub = document.createElement('p');
-const school = document.createElement('p'); 
-const office = document.createElement('p');
+</html>
+`;}
 
-//function to create team roster
-function populateTeam() {
-    headingCol.setAttribute("class", "col-12");
-    cardheading.textContent = `${firstName} ${lastName} ${role}`;
-    cardBody.append(id, email)
-    card.append(cardBody);
-    card.append(cardHeading);
-    //if role == manager cardBody.append${office};
-    //if role == intern cardbody.append${school};
-    //if role == engineer cardbody.append${gitHub}
-};
+//manager card
+const generateManager = (manager) => {
+    return `
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>${manager.name}</h2>
+                <h3>Manager</h3><i></i>
+            </div>
+            <div class="card-body">
+                <p class="id">ID: ${manager.id}</p>
+                <p class="email">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
+                <p class="office">Office Number: ${manager.officeNumber}</p>
+            </div>
+        </div>
+    </div>
+    `;
+}
 
+// engineer card
+const generateEngineer = (engineer) => {
+    return `
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>${engineer.name}</h2>
+                <h3>Engineer</h3><i></i>
+            </div>
+            <div class="card-body">
+                <p class="id">ID: ${engineer.id}</p>
+                <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
+                <p class="github">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
+            </div>
+        </div>
+    </div>
+    `;
+}
 
+// intern card
+const generateIntern = (intern)=> {
+    return `
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <h2>${intern.name}</h2>
+                <h3>Intern</h3><i></i>
+            </div>
+            <div class="card-body">
+                <p class="id">ID: ${intern.id}</p>
+                <p class="email">Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
+                <p class="school">School: ${intern.school}</p>
+            </div>
+    </div>
+</div>
+    `;
+}
+
+module.exports = generateHtml;
