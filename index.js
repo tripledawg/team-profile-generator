@@ -1,9 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHtml = require ('./generateHtml');
+const generateHtml = require('./generateHtml');
+const Manager = require('./manager');
+const Engineer = require('./engineer');
+const Intern = require('./intern');
+const teamMembers = [];
 
 function managerInit() {
-   return inquirer
+    return inquirer
         .prompt([
             {
                 type: 'input',
@@ -33,19 +37,14 @@ function managerInit() {
             },
 
         ])
-        .then((answers) => {
-            console.log(answers);
+        .then((managerAnswers) => {
+            const { firstName, lastName, id, email, officeNumber } = managerAnswers;
+            const manager = new Manager(firstName, lastName, id, email, officeNumber);
+            teamMembers.push(manager);
         });
 };
 
-managerInit()
-    .then(data => {
-        console.log('Welcome manager!')
-        employeeInit();
-    })
-    .catch(err => {
-        console.log(err)
-    });
+
 
 function employeeInit() {
     return inquirer
@@ -75,7 +74,7 @@ function employeeInit() {
                 type: 'checkbox',
                 name: 'role',
                 message: 'What is the team member\'s role at your company?',
-                choices: ['intern', 'engineer',]
+                choices: ['intern', 'engineer']
             },
             {
                 type: 'input',
@@ -88,8 +87,62 @@ function employeeInit() {
                 name: 'gitHub',
                 message: 'What is this engineer\'s GitHub username?',
                 when: (input) => input.gitHub == "engineer"
+            },
+            {
+                type: 'list',
+                name: 'enterAnother',
+                message: 'Would you like to enter another employee?',
+                choices: ['yes', 'no']
             }
         ])
+        .then(employeeData => {
+            let { firstName, lastName, id, email, role, github, school, enterAnother } = employeeData;
+            let employee;
+
+            if (role == "Engineer") {
+                employee = new Engineer(firstName, lastName, id, email, github);
+
+                console.log(employee);
+
+            } else if (role == "Intern") {
+                employee = new Intern(firstName, lastName, id, email, school);
+
+                console.log(employee);
+            }
+
+            teamMembers.push(employee);
+
+            if (enterAnother == 'yes') {
+                employeeInit(teamMembers);
+            } else {
+                return teamMembers;
+            }
+        })
 };
 
 
+// html
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("Congratualtions...")
+        }
+    })
+};
+
+managerInit()
+    .then(employeeInit)
+    .then(teamMembers => {
+        console.log(teamMembers);
+        return generateHtml(teamMembers);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+    });

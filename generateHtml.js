@@ -1,7 +1,6 @@
-
 //basic page
-const generateMyTeamPage = (emploeeCards) => {   
-    return`
+const generateMyTeamPage = (employeeCards) => {
+    return `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +21,8 @@ const generateMyTeamPage = (emploeeCards) => {
 </body>
 
 </html>
-`;}
+`;
+}
 
 //manager card
 const generateManager = (manager) => {
@@ -30,7 +30,7 @@ const generateManager = (manager) => {
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h2>${manager.name}</h2>
+                <h2>${manager.firstName} ${manager.lastName}}</h2>
                 <h3>Manager</h3><i><span class="<span class="material-icons-outlined">
                 meeting_room
                 </span></i>
@@ -51,7 +51,7 @@ const generateEngineer = (engineer) => {
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h2>${engineer.name}</h2>
+                <h2>${engineer.firstName} ${engineer.lastName}</h2>
                 <h3>Engineer</h3><i><span class="material-icons-outlined">
                 developer_board
                 </span></i>
@@ -67,12 +67,12 @@ const generateEngineer = (engineer) => {
 }
 
 // intern card
-const generateIntern = (intern)=> {
+const generateIntern = (intern) => {
     return `
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h2>${intern.name}</h2>
+                <h2>${intern.firstName} ${engineer.lastName}</h2>
                 <h3>Intern</h3><i><span class="material-icons-outlined">
                 backpack
                 </span>
@@ -88,4 +88,30 @@ const generateIntern = (intern)=> {
     `;
 }
 
+generateHtml = (data) => {
+
+    myTeam = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+        if (role === 'Manager') {
+            const managerCard = generateManager(employee);
+            myTeam.push(managerCard);
+        }
+        if (role === 'Engineer') {
+            const engineerCard = generateEngineer(employee);
+            myTeam.push(engineerCard);
+        }
+        if (role === 'Intern') {
+            const internCard = generateIntern(employee);
+            myTeam.push(internCard);
+        }
+
+    }
+    const employeeCards = myTeam.join('')
+    const generateTeam = generateTeamPage(employeeCards);
+    return generateTeam;
+
+}
 module.exports = generateHtml;
