@@ -1,4 +1,4 @@
-//basic page
+//main page
 const generateMyTeamPage = (employeeCards) => {
     return `
 <!DOCTYPE html>
@@ -17,12 +17,12 @@ const generateMyTeamPage = (employeeCards) => {
     <header>
         <h1>My Team</h1>
     </header>
-    <script src="script.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
 `;
-}
+}  //script.js or index.js?
 
 //manager card
 const generateManager = (manager) => {
@@ -30,7 +30,7 @@ const generateManager = (manager) => {
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h2>${manager.firstName} ${manager.lastName}}</h2>
+                <h2>${manager.name}</h2>
                 <h3>Manager</h3><i><span class="<span class="material-icons-outlined">
                 meeting_room
                 </span></i>
@@ -51,7 +51,7 @@ const generateEngineer = (engineer) => {
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h2>${engineer.firstName} ${engineer.lastName}</h2>
+                <h2>${engineer.name}</h2>
                 <h3>Engineer</h3><i><span class="material-icons-outlined">
                 developer_board
                 </span></i>
@@ -72,7 +72,7 @@ const generateIntern = (intern) => {
     <div class="col-4">
         <div class="card">
             <div class="card-header">
-                <h2>${intern.firstName} ${engineer.lastName}</h2>
+                <h2>${intern.name}</h2>
                 <h3>Intern</h3><i><span class="material-icons-outlined">
                 backpack
                 </span>

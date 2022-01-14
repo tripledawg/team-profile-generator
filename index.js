@@ -1,24 +1,19 @@
 const inquirer = require('inquirer');
-const fs = require('fs');
+const fs = require('fs');//file system
 const generateHtml = require('./generateHtml');
-const Manager = require('./manager');
-const Engineer = require('./engineer');
-const Intern = require('./intern');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
 const teamMembers = [];
 
 function managerInit() {
-    return inquirer
+     inquirer
+
         .prompt([
             {
                 type: 'input',
-                name: 'firstName',
-                message: 'What is the team manager\'s first name?'
-            },
-            {
-                type: 'input',
-                name: 'lastName',
-                message: 'What is team manager\'s last name?'
-
+                name: 'name',
+                message: 'What is the team manager\'s  name?'
             },
             {
                 type: 'input',
@@ -38,9 +33,10 @@ function managerInit() {
 
         ])
         .then((managerAnswers) => {
-            const { firstName, lastName, id, email, officeNumber } = managerAnswers;
-            const manager = new Manager(firstName, lastName, id, email, officeNumber);
+            const { name, id, email, officeNumber } = managerAnswers;
+            const manager = new Manager(name, id, email, officeNumber);
             teamMembers.push(manager);
+            employeeInit();
         });
 };
 
@@ -51,14 +47,8 @@ function employeeInit() {
         .prompt([
             {
                 type: 'input',
-                name: 'firstName',
-                message: 'What is the team member\'s first name?'
-            },
-            {
-                type: 'input',
-                name: 'lastName',
-                message: 'What is the team member\'s last name?'
-
+                name: 'name',
+                message: 'What is the team member\'s name?'
             },
             {
                 type: 'input',
@@ -86,7 +76,7 @@ function employeeInit() {
                 type: 'input',
                 name: 'gitHub',
                 message: 'What is this engineer\'s GitHub username?',
-                when: (input) => input.gitHub == "engineer"
+                when: (input) => input.role == "engineer"
             },
             {
                 type: 'list',
@@ -96,26 +86,24 @@ function employeeInit() {
             }
         ])
         .then(employeeData => {
-            let { firstName, lastName, id, email, role, github, school, enterAnother } = employeeData;
+            let { name, id, email, role, github, school, enterAnother } = employeeData;
             let employee;
 
             if (role == "Engineer") {
-                employee = new Engineer(firstName, lastName, id, email, github);
+                employee = new Engineer(name, id, email, github);
 
                 console.log(employee);
 
             } else if (role == "Intern") {
-                employee = new Intern(firstName, lastName, id, email, school);
+                employee = new Intern(name, id, email, school);
 
                 console.log(employee);
             }
-
             teamMembers.push(employee);
-
             if (enterAnother == 'yes') {
-                employeeInit(teamMembers);
+                employeeInit();
             } else {
-                return teamMembers;
+                buildTeam();
             }
         })
 };
@@ -124,7 +112,6 @@ function employeeInit() {
 // html
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
-
         if (err) {
             console.log(err);
             return;
@@ -135,14 +122,8 @@ const writeFile = data => {
 };
 
 managerInit()
-    .then(employeeInit)
-    .then(teamMembers => {
+    function buildTeam() {
         console.log(teamMembers);
-        return generateHtml(teamMembers);
-    })
-    .then(pageHTML => {
-        return writeFile(pageHTML);
-    })
-    .catch(err => {
-        console.log(err);
-    });
+        const pageHtml = generateHtml(teamMembers);
+        writeFile(pageHtml)
+    }
