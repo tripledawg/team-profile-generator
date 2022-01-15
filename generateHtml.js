@@ -61,7 +61,7 @@ const generateManager = (manager) => {
         <div class="card">
             <div class="card-header">
                 <h2>${manager.name}</h2>
-                <h3>Manager</h3><i><span class="material-icons-outlined">
+                <h3>Manager</h3><i><span class="material-icons">
                 meeting_room
                 </span></i>
             </div>
@@ -82,7 +82,7 @@ const generateEngineer = (engineer) => {
         <div class="card">
             <div class="card-header">
                 <h2>${engineer.name}</h2>
-                <h3>Engineer</h3><i><span class="material-icons-outlined">
+                <h3>Engineer</h3><i><span class="material-icons">
                 developer_board
                 </span></i>
             </div>
@@ -103,7 +103,7 @@ const generateIntern = (intern) => {
         <div class="card">
             <div class="card-header">
                 <h2>${intern.name}</h2>
-                <h3>Intern</h3><i><span class="material-icons-outlined">
+                <h3>Intern</h3><i><span class="material-icons">
                 backpack
                 </span>
                 </i>
