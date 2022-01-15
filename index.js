@@ -64,19 +64,19 @@ function employeeInit() {
                 type: 'checkbox',
                 name: 'role',
                 message: 'What is the team member\'s role at your company?',
-                choices: ['intern', 'engineer']
+                choices: ['Intern', 'Engineer']
             },
             {
                 type: 'input',
                 name: 'school',
                 message: 'What is the name of this intern\'s school?',
-                when: (input) => input.role == "intern"
+                when: (input) => input.role == "Intern"
             },
             {
                 type: 'input',
-                name: 'gitHub',
+                name: 'github',
                 message: 'What is this engineer\'s GitHub username?',
-                when: (input) => input.role == "engineer"
+                when: (input) => input.role == "Engineer"
             },
             {
                 type: 'list',
@@ -85,8 +85,8 @@ function employeeInit() {
                 choices: ['yes', 'no']
             }
         ])
-        .then(employeeData => {
-            let { name, id, email, role, github, school, enterAnother } = employeeData;
+        .then((employeeData) => {
+            const { name, id, email, role, github, school, enterAnother } = employeeData;
             let employee;
 
             if (role == "Engineer") {
@@ -111,12 +111,12 @@ function employeeInit() {
 
 // html
 const writeFile = data => {
-    fs.writeFile('./dist/index.html', data, err => {
+    fs.writeFile('./index.html', data, err => {
         if (err) {
             console.log(err);
             return;
         } else {
-            console.log("Congratualtions...")
+            console.log("Congratulations...")
         }
     })
 };

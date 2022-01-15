@@ -1,4 +1,31 @@
-//main page
+
+generateHtml = (data) => {
+
+    myTeam = [];
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i];
+        const role = employee.getRole();
+        if (role === 'Manager') {
+            const managerCard = generateManager(employee);
+            myTeam.push(managerCard);
+        }
+        if (role === 'Engineer') {
+            const engineerCard = generateEngineer(employee);
+            myTeam.push(engineerCard);
+        }
+        if (role === 'Intern') {
+            const internCard = generateIntern(employee);
+            myTeam.push(internCard);
+        }
+
+    }
+    const employeeCards = myTeam.join('')
+    const generateTeam = generateMyTeamPage(employeeCards);
+    return generateTeam;
+
+}//main page
+
 const generateMyTeamPage = (employeeCards) => {
     return `
 <!DOCTYPE html>
@@ -17,6 +44,7 @@ const generateMyTeamPage = (employeeCards) => {
     <header>
         <h1>My Team</h1>
     </header>
+    ${employeeCards}
     <script src="index.js"></script>
 </body>
 
@@ -88,30 +116,4 @@ const generateIntern = (intern) => {
     `;
 }
 
-generateHtml = (data) => {
-
-    myTeam = [];
-
-    for (let i = 0; i < data.length; i++) {
-        const employee = data[i];
-        const role = employee.getRole();
-        if (role === 'Manager') {
-            const managerCard = generateManager(employee);
-            myTeam.push(managerCard);
-        }
-        if (role === 'Engineer') {
-            const engineerCard = generateEngineer(employee);
-            myTeam.push(engineerCard);
-        }
-        if (role === 'Intern') {
-            const internCard = generateIntern(employee);
-            myTeam.push(internCard);
-        }
-
-    }
-    const employeeCards = myTeam.join('')
-    const generateTeam = generateTeamPage(employeeCards);
-    return generateTeam;
-
-}
 module.exports = generateHtml;
