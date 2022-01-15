@@ -30,7 +30,6 @@ const generateMyTeamPage = (employeeCards) => {
     return `
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,31 +38,30 @@ const generateMyTeamPage = (employeeCards) => {
     <link rel="stylesheet" href="style.css">
     <title>Team Profile Generator</title>
 </head>
-
 <body>
     <header>
-        <h1>My Team</h1>
+        <h1 class="header">My Team</h1>
     </header>
-    <div class= "row"> 
+    <div class="container-fluid">
+    <div class="row"> 
     ${employeeCards}
+    </div>
     </div>
     <script src="index.js"></script>
 </body>
-
-</html>
-`;
-}  //script.js or index.js?
+</html>`;
+}  
 
 //manager card
 const generateManager = (manager) => {
     return `
-    <div class="col-4">
+<div class="col">
         <div class="card">
             <div class="card-header">
                 <h2>${manager.name}</h2>
-                <h3>Manager</h3><i><span class="material-icons">
+                <h3>Manager<i><span class="material-icons">
                 meeting_room
-                </span></i>
+                </span></i></h3>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${manager.id}</p>
@@ -71,20 +69,19 @@ const generateManager = (manager) => {
                 <p class="office">Office Number: ${manager.officeNumber}</p>
             </div>
         </div>
-    </div>
-    `;
+    </div>`;
 }
 
 // engineer card
 const generateEngineer = (engineer) => {
     return `
-    <div class="col-4">
+    <div class="col">
         <div class="card">
             <div class="card-header">
                 <h2>${engineer.name}</h2>
-                <h3>Engineer</h3><i><span class="material-icons">
+                <h3>Engineer<i><span class="material-icons">
                 developer_board
-                </span></i>
+                </span></i></h3>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${engineer.id}</p>
@@ -92,30 +89,28 @@ const generateEngineer = (engineer) => {
                 <p class="github">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
             </div>
         </div>
-    </div>
-    `;
+    </div>`;
 }
 
 // intern card
 const generateIntern = (intern) => {
     return `
-    <div class="col-4">
+    <div class="col">
         <div class="card">
             <div class="card-header">
                 <h2>${intern.name}</h2>
-                <h3>Intern</h3><i><span class="material-icons">
+                <h3>Intern<i><span class="material-icons">
                 backpack
                 </span>
-                </i>
+                </i></h3>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${intern.id}</p>
                 <p class="email">Email:<a href="mailto:${intern.email}">${intern.email}</a></p>
                 <p class="school">School: ${intern.school}</p>
             </div>
-    </div>
-</div>
-    `;
+      </div>
+</div>`;
 }
 
 module.exports = generateHtml;

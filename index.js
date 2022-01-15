@@ -13,7 +13,7 @@ function managerInit() {
             {
                 type: 'input',
                 name: 'name',
-                message: 'What is the team manager\'s  name?'
+                message: 'What is the team manager\'s first and last name?'
             },
             {
                 type: 'input',
@@ -36,6 +36,7 @@ function managerInit() {
             const { name, id, email, officeNumber } = managerAnswers;
             const manager = new Manager(name, id, email, officeNumber);
             teamMembers.push(manager);
+            console.log("Welcome team manager! Now let's assemble your team.");
             employeeInit();
         });
 };
@@ -48,7 +49,7 @@ function employeeInit() {
             {
                 type: 'input',
                 name: 'name',
-                message: 'What is the team member\'s name?'
+                message: 'What is the team member\'s first and last name?'
             },
             {
                 type: 'input',
