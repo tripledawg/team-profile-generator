@@ -44,7 +44,9 @@ const generateMyTeamPage = (employeeCards) => {
     <header>
         <h1>My Team</h1>
     </header>
+    <div class= "row"> 
     ${employeeCards}
+    </div>
     <script src="index.js"></script>
 </body>
 
@@ -59,7 +61,7 @@ const generateManager = (manager) => {
         <div class="card">
             <div class="card-header">
                 <h2>${manager.name}</h2>
-                <h3>Manager</h3><i><span class="<span class="material-icons-outlined">
+                <h3>Manager</h3><i><span class="material-icons-outlined">
                 meeting_room
                 </span></i>
             </div>
