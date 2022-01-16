@@ -1,6 +1,6 @@
 # Team Profile Generator
-
-![responsive screenshot](screenshot_responsive.png) ![full size screenshot](screenshot.png)
+![full size screenshot](screenshot.png) 
+![responsive screenshot](screenshot_responsive.png) 
 
 ## [Click here to watch a demonstration.](https://watch.screencastify.com/v/4LxPgtdwVdKyn98V9Z14)
 
