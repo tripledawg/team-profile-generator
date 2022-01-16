@@ -8,27 +8,58 @@ const teamMembers = [];
 
 function managerInit() {
      inquirer
-
         .prompt([
             {
                 type: 'input',
                 name: 'name',
-                message: 'What is the team manager\'s first and last name?'
+                message: 'What is the team manager\'s first and last name?',
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter the team manager's name to continue.");
+                        return false; 
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is the team manager\'s ID number?'
+                message: 'What is the team manager\'s ID number?',
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter the team manager's ID number to continue.");
+                        return false; 
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'email',
-                message: 'What is the team manager\'s email?'
+                message: 'What is the team manager\'s email?',
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter the team manager's email to continue.");
+                        return false; 
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'officeNumber',
-                message: 'What is the team manager\'s office number?'
+                message: 'What is the team manager\'s office number?',
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter the team manager's office number to continue.");
+                        return false; 
+                    }
+                }
             },
 
         ])
@@ -36,7 +67,7 @@ function managerInit() {
             const { name, id, email, officeNumber } = managerAnswers;
             const manager = new Manager(name, id, email, officeNumber);
             teamMembers.push(manager);
-            console.log("Welcome team manager! Now let's assemble your team.");
+            console.log("Welcome " + managerAnswers.name + "! Now let's assemble your team.");  ///how to insert name??
             employeeInit();
         });
 };
@@ -49,43 +80,84 @@ function employeeInit() {
             {
                 type: 'input',
                 name: 'name',
-                message: 'What is the team member\'s first and last name?'
+                message: 'Please enter a team member\'s first and last name.',
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter the team member's name to continue.");
+                        return false; 
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'id',
-                message: 'What is the team member\'s ID number?'
+                message: 'PLease enter this team member\'s ID number.',
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter this team member's ID number to continue.");
+                        return false; 
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'email',
-                message: 'What is the team member\'s email?'
+                message: 'Please enter this team member\'s email.',
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter this team member's email to continue.");
+                        return false; 
+                    }
+                }
             },
             {
                 type: 'checkbox',
                 name: 'role',
-                message: 'What is the team member\'s role at your company?',
+                message: 'PLease enter the team member\'s role at your company.',
                 choices: ['Intern', 'Engineer']
             },
             {
                 type: 'input',
                 name: 'school',
-                message: 'What is the name of this intern\'s school?',
-                when: (input) => input.role == "Intern"
+                message: 'Where does this intern attend school?',
+                when: (input) => input.role == "Intern",
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter this intern\'s school name to continue.");
+                        return false; 
+                    }
+                }
             },
             {
                 type: 'input',
                 name: 'github',
                 message: 'What is this engineer\'s GitHub username?',
-                when: (input) => input.role == "Engineer"
+                when: (input) => input.role == "Engineer",
+                validate: input => {
+                    if (input) {
+                        return true;
+                    } else {
+                        console.log ("Please enter this engineer's gitHub username to continue.");
+                        return false; 
+                    }
+                }
             },
             {
-                type: 'list',
+                type: 'checkbox',
                 name: 'enterAnother',
                 message: 'Would you like to enter another employee?',
                 choices: ['yes', 'no']
-            }
+            },    
         ])
+
         .then((employeeData) => {
             const { name, id, email, role, github, school, enterAnother } = employeeData;
             let employee;
@@ -117,7 +189,7 @@ const writeFile = data => {
             console.log(err);
             return;
         } else {
-            console.log("Congratulations...")
+            console.log("Congratulations, your team has been assembled! Click on index.html to view your all-star team!")
         }
     })
 };

@@ -11,6 +11,11 @@
      padding: 10px;
      margin: 10px;
  }
+
+ .card-header {
+     color: white;
+     background-color: rgb(108, 31, 49) ;
+ }
  
  @font-face {
     font-family: 'Material Icons';
@@ -47,4 +52,14 @@
   
     /* Support for IE. */
     font-feature-settings: 'liga';
+  }
+
+  footer {
+    padding: 10px;
+    text-align: center;
+    align-content: center;
+  }
+
+  footer img {
+    align-content: center;
   }
