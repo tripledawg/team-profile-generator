@@ -1,6 +1,9 @@
 # Team Profile Generator
-## screenshot ![full size screenshot](screenshot.jpg)
-## [link to demo]()
+
+![responsive screenshot](screenshot_responsive.png) ![full size screenshot](screenshot.png)
+
+## [Click here to watch a demonstration.](https://watch.screencastify.com/v/4LxPgtdwVdKyn98V9Z14)
+
   ## Licensing:
   [![license](https://img.shields.io/badge/license-none-blue)](https://shields.io)
   ## Table of Contents: 
