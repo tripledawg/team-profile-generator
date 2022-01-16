@@ -49,7 +49,6 @@ const generateMyTeamPage = (employeeCards) => {
     </div>
     <script src="index.js"></script>
 </body>
-<footer><p>This demo in homage of <img src="theOffice.jpeg" alt="The Office"></p></footer>
 </html>`;
 }  
 
