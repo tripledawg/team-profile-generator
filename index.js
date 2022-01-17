@@ -1,10 +1,15 @@
-const inquirer = require('inquirer');
-const fs = require('fs');//file system
+// adding node modules 
+const inquirer = require('inquirer'); //for building user input prompts
+const fs = require('fs');//file system to write input to file
+
+//global constants connecting modules to index.js
 const generateHtml = require('./generateHtml');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
 const teamMembers = [];
+
+//function to start input prompts for the manager about the manager
 
 function managerInit() {
      inquirer
@@ -73,7 +78,7 @@ function managerInit() {
 };
 
 
-
+//function to start prompts for the manager to input employee data
 function employeeInit() {
     return inquirer
         .prompt([
@@ -157,9 +162,9 @@ function employeeInit() {
                 choices: ['yes', 'no']
             },    
         ])
-
+//returns a promise that creates a new engineer or intern based on manager input and then pushes that input onto the team member array
         .then((employeeData) => {
-            const { name, id, email, role, github, school, enterAnother } = employeeData;
+            const { name, id, email, role, github, school, enterAnother } = employeeData;  
             let employee;
 
             if (role == "Engineer") {
@@ -182,7 +187,7 @@ function employeeInit() {
 };
 
 
-// html
+// creates an html file using node's file system (fs) module 
 const writeFile = data => {
     fs.writeFile('./index.html', data, err => {
         if (err) {
@@ -194,6 +199,7 @@ const writeFile = data => {
     })
 };
 
+// connnects managerInit prompts function to the generateHtml function to the writeFile function
 managerInit()
     function buildTeam() {
         console.log(teamMembers);

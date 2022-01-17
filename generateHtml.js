@@ -1,4 +1,4 @@
-
+//function takes empty array and adds manager input 
 generateHtml = (data) => {
 
     myTeam = [];
@@ -24,7 +24,7 @@ generateHtml = (data) => {
     const generateTeam = generateMyTeamPage(employeeCards);
     return generateTeam;
 
-}//main page
+}//function to generate main page without manager input data
 
 const generateMyTeamPage = (employeeCards) => {
     return `
@@ -52,7 +52,7 @@ const generateMyTeamPage = (employeeCards) => {
 </html>`;
 }  
 
-//manager card
+//function to generate manager card with manager input
 const generateManager = (manager) => {
     return `
 <div class="col">
@@ -72,7 +72,7 @@ const generateManager = (manager) => {
     </div>`;
 }
 
-// engineer card
+// function to generate engineer card with manager input 
 const generateEngineer = (engineer) => {
     return `
     <div class="col">
@@ -92,7 +92,7 @@ const generateEngineer = (engineer) => {
     </div>`;
 }
 
-// intern card
+// function to create intern card with manager input 
 const generateIntern = (intern) => {
     return `
     <div class="col">
@@ -113,4 +113,5 @@ const generateIntern = (intern) => {
 </div>`;
 }
 
+//makes this function available to index.js
 module.exports = generateHtml;
